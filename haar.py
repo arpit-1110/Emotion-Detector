@@ -18,12 +18,12 @@ faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 i = 0
 im = []
 for (x, y, w, h) in faces:
-    im.append(img[y:y + h, x:x + w])
+    im.append(gray[y:y + h, x:x + w])
     roi_gray = gray[y:y + h, x:x + w]
     roi_color = img[y:y + h, x:x + w]
 
 for i in im:
-    cv2.imshow('img', img)
+    cv2.imshow('img', gray)
     cv2.waitKey(4000)
     cv2.imshow('img', i)
     cv2.waitKey(4000)
