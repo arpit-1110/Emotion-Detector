@@ -27,5 +27,8 @@ for i in im:
     cv2.waitKey(4000)
     cv2.imshow('img', i)
     cv2.waitKey(4000)
+    j = cv2.resize(i, (48, 48))
+    cv2.imshow('img', j)
+    cv2.waitKey(4000)
     # cv2.destroyAllWindows()
 cv2.destroyAllWindows()
