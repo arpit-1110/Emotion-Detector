@@ -10,9 +10,9 @@ def CNNmodel(num_emotions):
     model = Sequential()
     model.add(Conv2D(32, (5, 5), input_shape=(48, 48, 1),
                      activation='relu', padding='valid'))
-    model.add(Conv2D(64, (5, 5), activation='relu', padding='valid'))
+    model.add(Conv2D(64, (5, 5), activation='relu', padding='same'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Conv2D(128, (5, 5), activation='relu', padding='valid'))
+    model.add(Conv2D(128, (3, 3), activation='relu', padding='same'))
     model.add(Dropout(0.1))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Flatten())
@@ -20,5 +20,6 @@ def CNNmodel(num_emotions):
     model.add(Dropout(0.5))
     model.add(Dense(1024, kernel_initializer='normal', activation='relu'))
     model.add(Dropout(0.5))
-    model.add(Dense(num_emotions, kernel_initializer='normal', activation='softmax'))
+    model.add(Dense(num_emotions, kernel_initializer='normal',
+                    activation='softmax'))
     return model
