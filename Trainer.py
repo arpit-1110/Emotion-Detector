@@ -37,10 +37,11 @@ model = CNNmodel(num_emotions=7)
 optimizer = opt.Adadelta()
 model.compile(loss='categorical_crossentropy',
               optimizer=optimizer,
-              metrics=['accuracy'])
+              metrics=['accuracy'],
+              )
 
 model.fit(X_train, y_train, validation_data=(
-    X_validation, y_validation), epochs=epochs, verbose=2)
+    X_validation, y_validation), epochs=epochs, verbose=2, batch_size=200)
 
 scores = model.evaluate(X_test, y_test, verbose=0)
 print(scores[1] * 100)
