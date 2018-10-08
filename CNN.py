@@ -8,17 +8,17 @@ from keras.layers.convolutional import MaxPooling2D
 
 def CNNmodel(num_emotions):
     model = Sequential()
-    model.add(Conv2D(32, (5, 5), input_shape=(48, 48, 1),
+    model.add(Conv2D(16, (5, 5), input_shape=(24, 24, 1),
                      activation='relu', padding='valid'))
-    model.add(Conv2D(64, (5, 5), activation='relu', padding='same'))
+    model.add(Conv2D(32, (3, 3), activation='relu', padding='same'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Conv2D(128, (3, 3), activation='relu', padding='same'))
-    model.add(Dropout(0.1))
+    model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
+    model.add(Dropout(0.3))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Flatten())
-    model.add(Dense(2048, kernel_initializer='normal', activation='relu'))
-    model.add(Dropout(0.5))
     model.add(Dense(1024, kernel_initializer='normal', activation='relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(512, kernel_initializer='normal', activation='relu'))
     model.add(Dropout(0.5))
     model.add(Dense(num_emotions, kernel_initializer='normal',
                     activation='softmax'))
