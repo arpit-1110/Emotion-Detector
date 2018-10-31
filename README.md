@@ -1,2 +1,2 @@
 # Emotion-Detector
-Emotion detection using CNNs using keras and opencv
+Real time facial emotion detection using CNNs with keras and opencv
